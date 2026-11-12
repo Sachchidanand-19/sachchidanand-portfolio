@@ -44,6 +44,7 @@ function App() {
 
   const [activeImage, setActiveImage] = useState(null);
   const [activeCertificate, setActiveCertificate] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
@@ -55,17 +56,22 @@ function App() {
           </a>
         </div>
 
-        <nav className="nav-links">
-          <a href="#home" className="active">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#certificates">Certificates</a>
-          <a href="#projects">Projects</a>
-          <a href="#resume">Resume</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <div className={`nav-links ${menuOpen ? "menu-open" : ""}`}>
+          <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
+          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a>
+          <a href="#certificates" onClick={() => setMenuOpen(false)}>Certificates</a>
+          <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
+          <a href="#resume" onClick={() => setMenuOpen(false)}>Resume</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+        </div>
 
-        <button className="menu-btn">☰</button>
+        <button
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
       </header>
 
       {/* Hero Section */}
